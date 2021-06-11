@@ -1,0 +1,6 @@
+import numpy as np 
+from scipy import stats
+
+ages = np.random.randint(18, high = 90,size=500)
+print(ages)
+print(stats.mode(ages))
