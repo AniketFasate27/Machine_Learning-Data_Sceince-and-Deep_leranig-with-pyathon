@@ -7,3 +7,41 @@ df = pd.read_csv("http://media.sundog-soft.com/SelfDriving/FuelEfficiency.csv")
 gear_counts = df['# Gears'].value_counts()
 
 gear_counts.plot(kind='bar') 
+
+
+import seaborn as sns
+sns.set()
+
+gear_counts.plot(kind='bar')
+
+df.head()
+
+sns.distplot(df['CombMPG'])
+
+
+df2 = df[['Cylinders', 'CityMPG', 'HwyMPG', 'CombMPG']]
+df2.head()
+
+sns.pairplot(df2, height=2.5);  #Seaborn currently has a bug with the hue parameter so we've omitted it
+
+
+sns.scatterplot(x="Eng Displ", y="CombMPG", data=df)
+
+sns.jointplot(x="Eng Displ", y="CombMPG", data=df)
+
+sns.lmplot(x="Eng Displ", y="CombMPG", data=df)
+
+
+
+ax=sns.swarmplot(x='Mfr Name', y='CombMPG', data=df)
+ax.set_xticklabels(ax.get_xticklabels(),rotation=45)
+
+
+ax=sns.countplot(x='Mfr Name', data=df)
+ax.set_xticklabels(ax.get_xticklabels(),rotation=45)
+
+
+df2 = df.pivot_table(index='Cylinders', columns='Eng Displ', values='CombMPG', aggfunc='mean')
+sns.heatmap(df2)
+
+
