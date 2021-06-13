@@ -1,0 +1,15 @@
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+
+vals = np.random.normal(0, 0.5, 10000)
+
+plt.hist(vals, 500)
+plt.show()
+
+np.percentile(vals, 50)
+
+a=np.percentile(vals, 90)
+plt.hist(a,500)
+
+np.percentile(vals, 20)
